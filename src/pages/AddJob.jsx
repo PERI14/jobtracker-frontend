@@ -103,7 +103,7 @@ function AddJob() {
                     </div>
 
                     <button type="submit" className={styles.button}>Add Job Application</button>
-                    <button type="button" className={styles.backLink} onClick={() => navigate("/jobs")}>
+                    <button type="cancel" className={styles.backLink} onClick={() => navigate("/jobs")}>
                         Cancel and Go Back
                     </button>
                 </form>
