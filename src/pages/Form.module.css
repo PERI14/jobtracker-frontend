@@ -56,6 +56,12 @@
     transition: all 0.2s;
 }
 
+.select option {
+    background-color: #1e293b;
+    /* A solid dark color for visibility */
+    color: var(--text-main);
+}
+
 .input:focus,
 .select:focus {
     outline: none;
