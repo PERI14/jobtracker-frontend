@@ -1,5 +1,17 @@
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
-// ... (imports remain same)
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import Jobs from "./pages/Jobs";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AddJob from "./pages/AddJob";
+import EditJobs from "./pages/EditJob";
+import Layout from "./components/Layout";
+import { Toaster } from "react-hot-toast";
+
+console.log("App.jsx file loaded");
+console.log("Environment variables:", import.meta.env);
+
 function App() {
   console.log("App component being called");
   return (
@@ -19,4 +31,5 @@ function App() {
     </HashRouter>
   );
 }
+
 export default App;
