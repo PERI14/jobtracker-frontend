@@ -1,21 +1,9 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
-import Jobs from "./pages/Jobs";
-import ProtectedRoute from "./components/ProtectedRoute";
-import AddJob from "./pages/AddJob";
-import EditJobs from "./pages/EditJob";
-import Layout from "./components/Layout";
-import { Toaster } from "react-hot-toast";
-
-console.log("App.jsx file loaded");
-console.log("Environment variables:", import.meta.env);
-
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+// ... (imports remain same)
 function App() {
   console.log("App component being called");
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" />} />
@@ -28,7 +16,7 @@ function App() {
           <Route path="/edit-job/:id" element={<EditJobs />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 export default App;
