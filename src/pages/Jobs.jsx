@@ -3,10 +3,13 @@ import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import styles from "./Jobs.module.css";
 import toast from "react-hot-toast";
+import ConfirmModal from "../components/ConfirmModal";
 
 function Jobs() {
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedJobId, setSelectedJobId] = useState(null);
     const navigate = useNavigate();
 
     async function fetchJobs() {
@@ -27,17 +30,31 @@ function Jobs() {
         fetchJobs();
     }, []);
 
-    async function handleDelete(jobId) {
-        if (!window.confirm("Are you sure you want to delete this job?")) return;
+    function handleDelete(jobId) {
+        setSelectedJobId(jobId);
+        setIsModalOpen(true);
+    }
+
+    async function confirmDelete() {
+        if (!selectedJobId) return;
 
         try {
-            await api.delete(`/jobs/${jobId}`);
-            setJobs(jobs.filter(job => job.id !== jobId));
+            await api.delete(`/jobs/${selectedJobId}`);
+            setJobs(jobs.filter(job => job.id !== selectedJobId));
+            toast.success("Job deleted successfully");
         }
         catch (error) {
             console.error(error);
             toast.error("Failed to delete Job");
+        } finally {
+            setIsModalOpen(false);
+            setSelectedJobId(null);
         }
+    }
+
+    function cancelDelete() {
+        setIsModalOpen(false);
+        setSelectedJobId(null);
     }
 
     if (loading) {
@@ -85,6 +102,14 @@ function Jobs() {
                     ))}
                 </div>
             )}
+
+            <ConfirmModal
+                isOpen={isModalOpen}
+                title="Delete Job"
+                message="Are you sure you want to delete this job? This action cannot be undone."
+                onConfirm={confirmDelete}
+                onCancel={cancelDelete}
+            />
         </div>
     );
 }
