@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import styles from "./Jobs.module.css";
+import toast from "react-hot-toast";
 
 function Jobs() {
     const [jobs, setJobs] = useState([]);
@@ -15,7 +16,7 @@ function Jobs() {
         }
         catch (error) {
             console.error(error);
-            alert("Failed to Load Jobs");
+            toast.error("Failed to Load Jobs");
         }
         finally {
             setLoading(false);
@@ -35,7 +36,7 @@ function Jobs() {
         }
         catch (error) {
             console.error(error);
-            alert("Failed to delete Job");
+            toast.error("Failed to delete Job");
         }
     }
 

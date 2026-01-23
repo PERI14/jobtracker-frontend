@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../services/api";
 import styles from "./Login.module.css";
+import toast from "react-hot-toast";
 
 function Register() {
     const [name, setName] = useState("");
@@ -14,11 +15,11 @@ function Register() {
 
         try {
             await api.post("/auth/register", { name, email, password });
-            alert("Registration Successful! Please login.");
+            toast.success("Registration Successful! Please login.");
             navigate("/login");
         } catch (error) {
             console.error(error);
-            alert("Registration failed. Please try again.");
+            toast.error("Registration failed. Please try again.");
         }
     }
 

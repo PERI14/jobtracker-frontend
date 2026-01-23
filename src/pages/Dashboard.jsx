@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import styles from "./Dashboard.module.css";
+import toast from "react-hot-toast";
 
 function Dashboard() {
     const [summary, setSummary] = useState(null);
@@ -13,7 +14,7 @@ function Dashboard() {
             }
             catch (error) {
                 console.error(error);
-                alert("Failed to load dashboard data");
+                toast.error("Failed to load dashboard data");
             }
         }
         fetchSummary();

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../services/api";
 import styles from "./Form.module.css";
+import toast from "react-hot-toast";
 
 function EditJobs() {
     const { id } = useParams();
@@ -30,7 +31,7 @@ function EditJobs() {
             }
             catch (error) {
                 console.error(error);
-                alert("Failed to load job");
+                toast.error("Failed to load job");
                 navigate("/jobs");
             } finally {
                 setLoading(false);
@@ -53,12 +54,12 @@ function EditJobs() {
                 appliedDate,
             });
 
-            alert("Job updated successfully");
+            toast.success("Job updated successfully");
             navigate("/jobs");
         }
         catch (error) {
             console.error(error);
-            alert("Failed to update job");
+            toast.error("Failed to update job");
         }
     }
 

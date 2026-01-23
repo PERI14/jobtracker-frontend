@@ -2,6 +2,7 @@ import { useState } from "react";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import styles from "./Form.module.css";
+import toast from "react-hot-toast";
 
 function AddJob() {
     const [company, setCompany] = useState("");
@@ -16,17 +17,17 @@ function AddJob() {
         e.preventDefault();
 
         if (!company || !role || !status || !salary || !appliedDate) {
-            alert("All required fields must be filled");
+            toast.error("All required fields must be filled");
             return;
         }
         try {
             await api.post("/jobs", { company, role, status, source, salary, appliedDate });
-            alert("Job added successfully");
+            toast.success("Job added successfully");
             navigate("/jobs");
         }
         catch (error) {
             console.error(error);
-            alert("Failed to add job");
+            toast.error("Failed to add job");
         }
     }
 

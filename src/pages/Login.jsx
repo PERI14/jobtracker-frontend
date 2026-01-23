@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../services/api";
 import styles from "./Login.module.css";
+import toast from "react-hot-toast";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -14,10 +15,11 @@ function Login() {
         try {
             const response = await api.post("/auth/login", { email, password });
             localStorage.setItem("token", response.data.token);
+            toast.success("Welcome back!");
             navigate("/dashboard");
         } catch (error) {
             console.error(error);
-            alert("Invalid email or password");
+            toast.error("Invalid email or password");
         }
     }
 

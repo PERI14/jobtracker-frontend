@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AddJob from "./pages/AddJob";
 import EditJobs from "./pages/EditJob";
 import Layout from "./components/Layout";
+import { Toaster } from "react-hot-toast";
 
 console.log("App.jsx file loaded");
 console.log("Environment variables:", import.meta.env);
@@ -15,6 +16,7 @@ function App() {
   console.log("App component being called");
   return (
     <BrowserRouter>
+      <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route path="/login" element={<Login />} />
