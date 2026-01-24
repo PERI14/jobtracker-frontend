@@ -80,7 +80,7 @@
 }
 
 .bar1 {
-    transform: rotate(45deg);
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
 .bar2 {
@@ -88,7 +88,7 @@
 }
 
 .bar3 {
-    transform: rotate(-45deg);
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 .navContent {
@@ -112,13 +112,18 @@
         flex-direction: column;
         justify-content: center;
         transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.3s ease-in-out;
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
         border-left: 1px solid var(--border);
+        z-index: 1000;
     }
 
     .navActive {
         transform: translateX(0);
+        visibility: visible;
+        pointer-events: all;
     }
 
     .links {
