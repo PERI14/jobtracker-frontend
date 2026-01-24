@@ -59,6 +59,12 @@ textarea {
     padding: 2rem;
 }
 
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+}
+
 h1,
 h2,
 h3,

@@ -16,6 +16,7 @@
     font-weight: 700;
     background: linear-gradient(to right, #6366f1, #a855f7);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -53,4 +54,81 @@
 .logoutBtn:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: var(--text-muted);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 1.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.bar {
+    width: 2rem;
+    height: 0.2rem;
+    background: var(--text-main);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+.bar1 {
+    transform: rotate(45deg);
+}
+
+.bar2 {
+    opacity: 0;
+}
+
+.bar3 {
+    transform: rotate(-45deg);
+}
+
+.navContent {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .navContent {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 70%;
+        background: var(--bg-dark);
+        flex-direction: column;
+        justify-content: center;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        border-left: 1px solid var(--border);
+    }
+
+    .navActive {
+        transform: translateX(0);
+    }
+
+    .links {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .link {
+        font-size: 1.25rem;
+    }
 }
