@@ -28,13 +28,45 @@
 }
 
 .uploadCard {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 3rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     border-radius: 32px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding-left: 0.5rem;
+}
+
+.textarea {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.2rem;
+    color: var(--text-main);
+    font-size: 1rem;
+    min-height: 120px;
+    resize: vertical;
+    transition: all 0.3s;
+}
+
+.textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
 }
 
 .dropZone {

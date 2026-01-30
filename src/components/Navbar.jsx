@@ -16,14 +16,19 @@ function Navbar() {
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     return (
-        <nav className={styles.navbar}>
-            <div className={styles.logo}>JobTracker</div>
+        <nav className={`${styles.navbar} glass-header`}>
+            <div className={styles.navContainer}>
+                <Link to="/" className={styles.logo}>
+                    <span className={styles.logoIcon}>🎯</span>
+                    JobTracker
+                </Link>
 
-            <button className={styles.hamburger} onClick={toggleMenu}>
-                <span className={`${styles.bar} ${isMenuOpen ? styles.bar1 : ""}`}></span>
-                <span className={`${styles.bar} ${isMenuOpen ? styles.bar2 : ""}`}></span>
-                <span className={`${styles.bar} ${isMenuOpen ? styles.bar3 : ""}`}></span>
-            </button>
+                <button className={styles.hamburger} onClick={toggleMenu}>
+                    <span className={`${styles.bar} ${isMenuOpen ? styles.bar1 : ""}`}></span>
+                    <span className={`${styles.bar} ${isMenuOpen ? styles.bar2 : ""}`}></span>
+                    <span className={`${styles.bar} ${isMenuOpen ? styles.bar3 : ""}`}></span>
+                </button>
+            </div>
 
             <div className={`${styles.navContent} ${isMenuOpen ? styles.navActive : ""}`}>
                 <div className={styles.links}>

@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AddJob from "./pages/AddJob";
 import EditJobs from "./pages/EditJob";
 import ResumeAnalyzer from "./pages/ResumeAnalyzer";
+import Landing from "./pages/Landing";
 import Layout from "./components/Layout";
 import { Toaster } from "react-hot-toast";
 
@@ -19,7 +20,7 @@ function App() {
     <HashRouter>
       <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
       <Routes>
-        <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>

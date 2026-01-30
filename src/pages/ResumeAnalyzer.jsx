@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 
 function ResumeAnalyzer() {
     const [file, setFile] = useState(null);
+    const [jobDescription, setJobDescription] = useState("");
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState(null);
     const [isDragging, setIsDragging] = useState(false);
@@ -47,6 +48,7 @@ function ResumeAnalyzer() {
         setLoading(true);
         const formData = new FormData();
         formData.append("resume", file);
+        formData.append("jobDescription", jobDescription);
 
         try {
             const response = await api.post("/resume/analyze", formData, {
@@ -111,6 +113,16 @@ function ResumeAnalyzer() {
                                 <p className={styles.fileHint}>Supported format: PDF</p>
                             </div>
                         )}
+                    </div>
+
+                    <div className={styles.inputGroup}>
+                        <label className={styles.label}>Job Description (Paste here)</label>
+                        <textarea
+                            className={styles.textarea}
+                            placeholder="Paste the job description for better analysis match..."
+                            value={jobDescription}
+                            onChange={(e) => setJobDescription(e.target.value)}
+                        />
                     </div>
 
                     <button
