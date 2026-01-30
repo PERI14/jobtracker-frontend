@@ -127,8 +127,8 @@ function ResumeAnalyzer() {
                         <div className={styles.scoreCircle}>
                             <svg viewBox="0 0 36 36" className={styles.circularChart}>
                                 <path className={styles.circleBg} d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <path className={styles.circle} style={{ strokeDasharray: `${result.score}, 100` }} d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <text x="18" y="20.35" className={styles.percentage}>{result.score}%</text>
+                                <path className={styles.circle} style={{ strokeDasharray: `${result.score || 0}, 100` }} d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <text x="18" y="20.35" className={styles.percentage}>{result.score || 0}%</text>
                             </svg>
                             <span className={styles.scoreLabel}>Overall Match Score</span>
                         </div>
@@ -136,9 +136,11 @@ function ResumeAnalyzer() {
                         <div className={styles.skillsSection}>
                             <h3>Extracted Skills</h3>
                             <div className={styles.skillBadges}>
-                                {result.skills.map((skill, i) => (
+                                {Array.isArray(result.skills) ? result.skills.map((skill, i) => (
                                     <span key={i} className={styles.skillBadge}>{skill}</span>
-                                ))}
+                                )) : (result.misssingKeywords ? result.misssingKeywords.split(',').map((skill, i) => (
+                                    <span key={i} className={styles.skillBadge}>{skill.trim()}</span>
+                                )) : <p>No skills identified</p>)}
                             </div>
                         </div>
 
@@ -148,18 +150,20 @@ function ResumeAnalyzer() {
                     <div className={`${styles.sideResult} glass-card`}>
                         <h3>Optimization Tips</h3>
                         <ul className={styles.suggestionList}>
-                            {result.suggestions.map((tip, i) => (
+                            {Array.isArray(result.suggestions) ? result.suggestions.map((tip, i) => (
                                 <li key={i}>{tip}</li>
-                            ))}
+                            )) : (result.recommendations ? result.recommendations.split('.').filter(Boolean).map((tip, i) => (
+                                <li key={i}>{tip.trim()}</li>
+                            )) : <li>No suggestions available</li>)}
                         </ul>
 
                         <div className={styles.formattingBox}>
                             <div className={styles.formatHeader}>
                                 <span>Formatting Score</span>
-                                <span>{result.formattingScore}%</span>
+                                <span>{result.formattingScore || 100}%</span>
                             </div>
                             <div className={styles.progressLine}>
-                                <div className={styles.fill} style={{ width: `${result.formattingScore}%` }}></div>
+                                <div className={styles.fill} style={{ width: `${result.formattingScore || 100}%` }}></div>
                             </div>
                         </div>
                     </div>
