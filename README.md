@@ -1,16 +1,70 @@
-# React + Vite
+# 🚀 JobTracker - Modern Job Application Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**JobTracker** is a premium, feature-rich web application designed to help job seekers track, manage, and optimize their job search journey. Built with a modern aesthetic and powerful utilities, it provides a seamless experience for organizing applications and gaining insights.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 💎 Premium UI/UX
+- **Modern Aesthetics**: A sleek, dark-themed design using glassmorphism, vibrant gradients, and smooth animations.
+- **Responsive Design**: Fully optimized for mobile, tablet, and desktop viewing.
+- **Interactive Dashboard**: Visual breakdown of application statuses and sources with smooth progress bars.
 
-## React Compiler
+### 📝 Job Management
+- **Smart Tracking**: Easily add and edit job applications with details like Company, Role, Salary, and Source.
+- **Priority & Categorization**: Mark jobs as High/Medium/Low priority and categorize them (Full-time, Remote, etc.).
+- **Search & Filter**: Real-time filtering by status and instant search capability to find specific applications.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 📄 Resume Analyzer
+- **AI-Powered Insights**: Upload your resume to get an instant analysis of your skills and formatting.
+- **Optimization Tips**: Get actionable suggestions to improve your resume's impact.
+- **Skill Extraction**: Automatically identifies key skills mentioned in your document.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React 19, Vite
+- **Styling**: Vanilla CSS with CSS Modules
+- **Routing**: React Router 7
+- **HTTP Client**: Axios
+- **Notifications**: React Hot Toast
+- **Typography**: Plus Jakarta Sans & Outfit (via Google Fonts)
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (Latest LTS recommended)
+- A running backend server (see [Backend Repository](https://github.com/PERI14/jobtrackr-backend))
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/PERI14/jobtracker-frontend.git
+   cd jobtracker-frontend
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables**:
+   Create a `.env` file in the root directory and add your backend URL:
+   ```env
+   VITE_API_BASE_URL=http://localhost:8080/api
+   ```
+
+4. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+
+## 🔗 Backend Compatibility Note
+
+To fullfill all features (Priority, Category, Resume Analyzer), ensure your backend supports:
+- **Job Entity**: Fields for `priority` and `category`.
+- **Analyzer Endpoint**: `POST /api/resume/analyze` for PDF processing.
+
+---
+
+Built with ❤️ by Periyasamy
+
