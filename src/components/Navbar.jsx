@@ -44,6 +44,14 @@ function Navbar() {
                     </Link>
 
                     <Link
+                        to="/resume-analyzer"
+                        className={`${styles.link} ${isActive("/resume-analyzer") ? styles.active : ""}`}
+                        onClick={() => setIsMenuOpen(false)}
+                    >
+                        Resume Analyzer
+                    </Link>
+
+                    <Link
                         to="/addjob"
                         className={`${styles.link} ${isActive("/addjob") ? styles.active : ""}`}
                         onClick={() => setIsMenuOpen(false)}

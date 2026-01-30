@@ -6,6 +6,7 @@ import Jobs from "./pages/Jobs";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AddJob from "./pages/AddJob";
 import EditJobs from "./pages/EditJob";
+import ResumeAnalyzer from "./pages/ResumeAnalyzer";
 import Layout from "./components/Layout";
 import { Toaster } from "react-hot-toast";
 
@@ -24,6 +25,7 @@ function App() {
         <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/jobs" element={<Jobs />} />
+          <Route path="/resume-analyzer" element={<ResumeAnalyzer />} />
           <Route path="/addjob" element={<AddJob />} />
           <Route path="/edit-job/:id" element={<EditJobs />} />
         </Route>

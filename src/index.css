@@ -1,67 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
+    /* Base Colors */
     --primary: #6366f1;
     --primary-hover: #4f46e5;
-    --bg-dark: #0f172a;
-    --card-bg: rgba(30, 41, 59, 0.7);
+    --primary-glow: rgba(99, 102, 241, 0.4);
+
+    --bg-dark: #0b0f1a;
+    --bg-darker: #050810;
+
+    --card-bg: rgba(23, 28, 44, 0.6);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
+    --text-dim: #64748b;
+
     --border: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-bg: rgba(255, 255, 255, 0.03);
+
+    /* Status Colors */
     --success: #10b981;
+    --success-bg: rgba(16, 185, 129, 0.1);
     --warning: #f59e0b;
+    --warning-bg: rgba(245, 158, 11, 0.1);
     --danger: #ef4444;
+    --danger-bg: rgba(239, 68, 68, 0.1);
     --info: #3b82f6;
+    --info-bg: rgba(59, 130, 246, 0.1);
+
+    /* Priority Colors */
+    --prio-high: #f43f5e;
+    --prio-medium: #fb923c;
+    --prio-low: #2dd4bf;
+
+    /* Shadows & Effects */
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --glow: 0 0 20px var(--primary-glow);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
     background-color: var(--bg-dark);
     color: var(--text-main);
     min-height: 100vh;
-    line-height: 1.5;
+    line-height: 1.6;
     background-image:
-        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+        radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 1) 0%, var(--bg-dark) 100%);
+    background-attachment: fixed;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-dim);
 }
 
 button {
     cursor: pointer;
     font-family: inherit;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 input,
 select,
 textarea {
     font-family: inherit;
+    outline: none;
 }
 
 .glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2.5rem 2rem;
 }
 
 @media (max-width: 768px) {
     .container {
-        padding: 1rem;
+        padding: 1.5rem 1rem;
     }
 }
 
@@ -69,15 +123,34 @@ h1,
 h2,
 h3,
 h4 {
-    font-weight: 600;
-    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-main);
 }
 
 a {
     color: var(--primary);
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 a:hover {
-    text-decoration: underline;
+    color: var(--primary-hover);
+}
+
+/* Utility Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
 }
