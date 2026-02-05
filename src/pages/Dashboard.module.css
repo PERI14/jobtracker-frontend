@@ -70,6 +70,95 @@
     letter-spacing: 0.05em;
 }
 
+.reminderSection {
+    margin-bottom: 3.5rem;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.reminderGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.reminderCard {
+    padding: 1.5rem;
+    border-radius: 20px;
+    border-left: 4px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.reminderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reminderDate {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    background: var(--primary-bg);
+    border-radius: 8px;
+}
+
+.reminderStatus {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--warning);
+    text-transform: uppercase;
+}
+
+.reminderBody {
+    display: flex;
+    flex-direction: column;
+}
+
+.companyName {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.roleName {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.reminderNotes {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--text-dim);
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--border);
+}
+
+.actionBtn {
+    margin-top: auto;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.actionBtn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
 .chartsGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));

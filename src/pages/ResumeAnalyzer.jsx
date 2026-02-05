@@ -9,6 +9,13 @@ function ResumeAnalyzer() {
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState(null);
     const [isDragging, setIsDragging] = useState(false);
+    const [completedTips, setCompletedTips] = useState([]);
+
+    const toggleTip = (tip) => {
+        setCompletedTips(prev =>
+            prev.includes(tip) ? prev.filter(t => t !== tip) : [...prev, tip]
+        );
+    };
 
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
@@ -163,9 +170,27 @@ function ResumeAnalyzer() {
                         <h3>Optimization Tips</h3>
                         <ul className={styles.suggestionList}>
                             {Array.isArray(result.suggestions) ? result.suggestions.map((tip, i) => (
-                                <li key={i}>{tip}</li>
+                                <li key={i} className={completedTips.includes(tip) ? styles.completedTip : ""}>
+                                    <label className={styles.tipLabel}>
+                                        <input
+                                            type="checkbox"
+                                            checked={completedTips.includes(tip)}
+                                            onChange={() => toggleTip(tip)}
+                                        />
+                                        <span>{tip}</span>
+                                    </label>
+                                </li>
                             )) : (result.recommendations ? result.recommendations.split('.').filter(Boolean).map((tip, i) => (
-                                <li key={i}>{tip.trim()}</li>
+                                <li key={i} className={completedTips.includes(tip) ? styles.completedTip : ""}>
+                                    <label className={styles.tipLabel}>
+                                        <input
+                                            type="checkbox"
+                                            checked={completedTips.includes(tip)}
+                                            onChange={() => toggleTip(tip)}
+                                        />
+                                        <span>{tip.trim()}</span>
+                                    </label>
+                                </li>
                             )) : <li>No suggestions available</li>)}
                         </ul>
 

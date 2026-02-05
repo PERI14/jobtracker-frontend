@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
+import { useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
 import toast from "react-hot-toast";
 
 function Dashboard() {
     const [summary, setSummary] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchSummary() {
@@ -63,6 +65,35 @@ function Dashboard() {
                     </div>
                 </div>
             </div>
+
+            {summary.upcomingFollowUps && summary.upcomingFollowUps.length > 0 && (
+                <div className={`${styles.reminderSection} fade-in`}>
+                    <h2 className={styles.sectionTitle}>📅 Action Required: Upcoming Follow-ups</h2>
+                    <div className={styles.reminderGrid}>
+                        {summary.upcomingFollowUps.map((job) => (
+                            <div key={job.id} className={`${styles.reminderCard} glass-card`}>
+                                <div className={styles.reminderHeader}>
+                                    <span className={styles.reminderDate}>
+                                        {new Date(job.followUpDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
+                                    </span>
+                                    <span className={styles.reminderStatus}>Due Soon</span>
+                                </div>
+                                <div className={styles.reminderBody}>
+                                    <strong className={styles.companyName}>{job.company}</strong>
+                                    <span className={styles.roleName}>{job.role}</span>
+                                    {job.followUpNotes && <p className={styles.reminderNotes}>"{job.followUpNotes}"</p>}
+                                </div>
+                                <button
+                                    className={styles.actionBtn}
+                                    onClick={() => navigate(`/edit-job/${job.id}`)}
+                                >
+                                    Update Status
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
 
             <div className={styles.chartsGrid}>
                 <div className={`${styles.chartCard} glass-card`}>

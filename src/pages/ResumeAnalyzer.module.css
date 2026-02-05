@@ -278,6 +278,7 @@
     padding-left: 1.5rem;
     line-height: 1.5;
     color: var(--text-muted);
+    transition: all 0.3s ease;
 }
 
 .suggestionList li::before {
@@ -286,6 +287,29 @@
     left: 0;
     color: var(--primary);
     font-weight: bold;
+}
+
+.completedTip {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.tipLabel {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.tipLabel input {
+    margin-top: 0.3rem;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+}
+
+.tipLabel span {
+    flex: 1;
 }
 
 .formattingBox {

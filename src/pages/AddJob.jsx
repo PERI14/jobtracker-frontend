@@ -13,6 +13,8 @@ function AddJob() {
     const [source, setSource] = useState("");
     const [salary, setSalary] = useState("");
     const [appliedDate, setAppliedDate] = useState("");
+    const [followUpDate, setFollowUpDate] = useState("");
+    const [followUpNotes, setFollowUpNotes] = useState("");
     const navigate = useNavigate();
 
     async function handleSubmit(e) {
@@ -23,7 +25,18 @@ function AddJob() {
             return;
         }
         try {
-            await api.post("/jobs", { company, role, status, priority, category, source, salary, appliedDate });
+            await api.post("/jobs", {
+                company,
+                role,
+                status,
+                priority,
+                category,
+                source,
+                salary,
+                appliedDate,
+                followUpDate: followUpDate || null,
+                followUpNotes
+            });
             toast.success("Job added successfully");
             navigate("/jobs");
         }
@@ -136,6 +149,28 @@ function AddJob() {
                                 className={styles.input}
                                 value={appliedDate}
                                 onChange={(e) => setAppliedDate(e.target.value)}
+                            />
+                        </div>
+                    </div>
+
+                    <div className={styles.row}>
+                        <div className={styles.group}>
+                            <label className={styles.label}>Follow-up Date (Optional)</label>
+                            <input
+                                type="date"
+                                className={styles.input}
+                                value={followUpDate}
+                                onChange={(e) => setFollowUpDate(e.target.value)}
+                            />
+                        </div>
+
+                        <div className={styles.group}>
+                            <label className={styles.label}>Follow-up Notes</label>
+                            <input
+                                className={styles.input}
+                                placeholder="e.g. Follow up with HR if no response"
+                                value={followUpNotes}
+                                onChange={(e) => setFollowUpNotes(e.target.value)}
                             />
                         </div>
                     </div>

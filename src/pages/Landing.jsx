@@ -63,6 +63,55 @@ function Landing() {
                 </div>
             </section>
 
+            <section className={styles.section}>
+                <div className={styles.sectionHeader}>
+                    <h2 className={styles.sectionTitle}>Don't Just Track. <span className={styles.gradientText}>Take Action.</span></h2>
+                    <p className={styles.sectionSubtitle}>Most trackers are passive repositories. JobTracker is your proactive career assistant.</p>
+                </div>
+
+                <div className={styles.proactiveFeature}>
+                    <div className={`${styles.proactiveCard} glass-card slide-up`}>
+                        <div className={styles.cardIndicator}>🔥 Priority Feature</div>
+                        <h3>Smart Follow-Up Reminder System</h3>
+                        <p>
+                            Never let a recruiter's silence be the end of your journey. Our system analyzes your application timeline
+                            and prompts you to follow up at the perfect moment.
+                        </p>
+                        <ul className={styles.benefitList}>
+                            <li>Automated reminders based on application status</li>
+                            <li>Personalized follow-up note templates</li>
+                            <li>Momentum tracking to prevent application aging</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section className={styles.howItWorks}>
+                <h2 className={styles.centeredTitle}>Your Path to Hired</h2>
+                <div className={styles.stepsGrid}>
+                    <div className={styles.step}>
+                        <div className={styles.stepNumber}>01</div>
+                        <h4>Import & Track</h4>
+                        <p>Add job details manually or via our browser extension in seconds.</p>
+                    </div>
+                    <div className={styles.step}>
+                        <div className={styles.stepNumber}>02</div>
+                        <h4>Optimize with AI</h4>
+                        <p>Analyze your resume against the JD to ensure you clear the ATS filters.</p>
+                    </div>
+                    <div className={styles.step}>
+                        <div className={styles.stepNumber}>03</div>
+                        <h4>Nail the Interview</h4>
+                        <p>Get AI-generated talking points and strategy guides for every role.</p>
+                    </div>
+                    <div className={styles.step}>
+                        <div className={styles.stepNumber}>04</div>
+                        <h4>Proactive Follow-up</h4>
+                        <p>Let the system remind you exactly when to ping the recruiter.</p>
+                    </div>
+                </div>
+            </section>
+
             <section className={styles.features}>
                 <div className={styles.featureGrid}>
                     <div className={`${styles.featureCard} glass-card`}>
@@ -86,7 +135,7 @@ function Landing() {
             <footer className={styles.footer}>
                 <p>&copy; 2026 JobTracker. Designed for tomorrow's talent.</p>
             </footer>
-        </div>
+        </div >
     );
 }
 
