@@ -153,13 +153,11 @@ function ResumeAnalyzer() {
                         </div>
 
                         <div className={styles.skillsSection}>
-                            <h3>Extracted Skills</h3>
+                            <h3>Missing Skills & Keywords</h3>
                             <div className={styles.skillBadges}>
-                                {Array.isArray(result.skills) ? result.skills.map((skill, i) => (
-                                    <span key={i} className={styles.skillBadge}>{skill}</span>
-                                )) : (result.misssingKeywords ? result.misssingKeywords.split(',').map((skill, i) => (
+                                {result.misssingKeywords ? result.misssingKeywords.split(',').map((skill, i) => (
                                     <span key={i} className={styles.skillBadge}>{skill.trim()}</span>
-                                )) : <p>No skills identified</p>)}
+                                )) : <p>No missing keywords identified. Great job!</p>}
                             </div>
                         </div>
 
@@ -169,18 +167,7 @@ function ResumeAnalyzer() {
                     <div className={`${styles.sideResult} glass-card`}>
                         <h3>Optimization Tips</h3>
                         <ul className={styles.suggestionList}>
-                            {Array.isArray(result.suggestions) ? result.suggestions.map((tip, i) => (
-                                <li key={i} className={completedTips.includes(tip) ? styles.completedTip : ""}>
-                                    <label className={styles.tipLabel}>
-                                        <input
-                                            type="checkbox"
-                                            checked={completedTips.includes(tip)}
-                                            onChange={() => toggleTip(tip)}
-                                        />
-                                        <span>{tip}</span>
-                                    </label>
-                                </li>
-                            )) : (result.recommendations ? result.recommendations.split('.').filter(Boolean).map((tip, i) => (
+                            {result.recommendations ? result.recommendations.split('.').filter(Boolean).map((tip, i) => (
                                 <li key={i} className={completedTips.includes(tip) ? styles.completedTip : ""}>
                                     <label className={styles.tipLabel}>
                                         <input
@@ -191,7 +178,7 @@ function ResumeAnalyzer() {
                                         <span>{tip.trim()}</span>
                                     </label>
                                 </li>
-                            )) : <li>No suggestions available</li>)}
+                            )) : <li>No suggestions available</li>}
                         </ul>
 
                         <div className={styles.formattingBox}>
